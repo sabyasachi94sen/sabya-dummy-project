@@ -1,7 +1,24 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/c/3029-d29f-4014-9fb4', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((d) => d?.json())?.then((info) => {
+      setData(info)
+    })
+  }, [])
+
+  console.log(data, 'data')
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -90,6 +107,9 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <>
+      {data && <div style={{color:'blue'}}>{data?.foo}</div>}
+      </>
     </div>
   );
 }

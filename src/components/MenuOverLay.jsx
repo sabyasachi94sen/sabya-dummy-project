@@ -1,4 +1,35 @@
+import React from "react";
+
 export const MenuOverLay = () => {
+    const [isVisible, setVisible] = React.useState(false);
+    const [isVisible1, setVisible1] = React.useState(false);
+    const [isVisible2, setVisible2] = React.useState(false);
+    const [isVisible3, setVisible3] = React.useState(false);
+    const domRef = React.useRef();
+    const domRef1 = React.useRef();
+    const domRef2 = React.useRef();
+    const domRef3 = React.useRef();
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => setVisible(entry.isIntersecting));
+      });
+      const observer1 = new IntersectionObserver(entries => {
+        entries.forEach(entry => setVisible1(entry.isIntersecting));
+      });
+      const observer2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => setVisible2(entry.isIntersecting));
+      });
+
+      const observer3 = new IntersectionObserver(entries => {
+        entries.forEach(entry => setVisible3(entry.isIntersecting));
+      });
+      observer.observe(domRef.current);
+      observer1.observe(domRef1.current);
+      observer2.observe(domRef2.current);
+      observer3.observe(domRef3.current);
+    }, []);
+
+
     return (
         <>
             <div className="overlay overlay-slide-left" id="overlay">
@@ -41,16 +72,16 @@ export const MenuOverLay = () => {
                 </div>
             </section>
             <section id="about" className="center">
-                <h1>Take your sales process from chaos to clarity</h1>
+                <h1 ref={domRef}  className={`fade-in-section center ${isVisible ? 'is-visible' : ''}`}>Take your sales process from chaos to clarity</h1>
             </section>
             <section id="skills" className="center">
-                <h1>Enterprise-grade security guaranteed</h1>
+                <h1 ref={domRef1}  className={`fade-in-section center ${isVisible1 ? 'is-visible' : ''}`}>Enterprise-grade security guaranteed</h1>
             </section>
             <section id="projects" className="center">
-                <h1>Bring in your best sales engineer on every deal</h1>
+                <h1 ref={domRef2}  className={`fade-in-section center ${isVisible2 ? 'is-visible' : ''}`}>Bring in your best sales engineer on every deal</h1>
             </section>
             <section id="contact" className="center">
-                <h1>Have Our AI make decisions for you</h1>
+                <h1 ref={domRef3}  className={`fade-in-section center ${isVisible3 ? 'is-visible' : ''}`}>Have Our AI make decisions for you</h1>
             </section>
         </>
     )

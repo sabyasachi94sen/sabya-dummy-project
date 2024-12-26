@@ -28,7 +28,7 @@ export const MenuOverLay = () => {
                 <div className="menu-bar3"></div>
             </div>
             <section id="home" className="center">
-                <p className="logo">Sabyasachi</p>
+                <p className="logo">Crenovent</p>
             </section>
             <section id="about" className="center">
                 <h1>Know More Who I am</h1>

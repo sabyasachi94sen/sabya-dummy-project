@@ -13,7 +13,7 @@ export const MenuOverLay = () => {
     function remove_hash_from_url() {
         var uri = window.location.toString();
         console.log('abcd');
-        
+
         history.replaceState("", document.title, window.location.pathname);
 
     }
@@ -38,7 +38,7 @@ export const MenuOverLay = () => {
         observer3.observe(domRef3.current);
 
         window.addEventListener('hashchange', () => {
-            window.history.replaceState('','','/',('#')[0]);
+            window.history.replaceState('', '', '/', ('#')[0]);
         });
 
         if (window != 'undefined') {
@@ -82,10 +82,13 @@ export const MenuOverLay = () => {
             <section id="home" className="center">
                 <p className="logo">SLHUB</p>
                 <div className="d-flex flex-column">
-                    <div className="slide slide-right bg-none center">
+                      <div className="center content mb-5">
+                        <h2>SLHUB</h2>
+                        <h2>SLHUB</h2>
+                    </div>
+                    <div className="slide slide-right bg-none center mt-5">
                         <h1 className="d-flex justify-content-center gap-4 align-items-center ">Meet SLHUB <img className="robot-icon" src="/img/robot.svg" /></h1>
                     </div>
-                    <div className="line fade-in mt-5"></div>
                     <div className="slide slide-left mt-5 bg-none center">
                         <h1>Accelerate wins
                             with your AI Sales Engineer</h1>

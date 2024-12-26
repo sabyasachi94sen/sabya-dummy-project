@@ -12,15 +12,9 @@ export const MenuOverLay = () => {
 
     function remove_hash_from_url() {
         var uri = window.location.toString();
-
-        if (uri.indexOf("#") > 0) {
-            var clean_uri = uri.substring(0,
-                uri.indexOf("#"));
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-
-            window.history.replaceState({},
-                document.title, '/');
-        }
+        console.log('abcd');
+        
+        history.replaceState("", document.title, window.location.pathname);
 
     }
 
@@ -43,9 +37,14 @@ export const MenuOverLay = () => {
         observer2.observe(domRef2.current);
         observer3.observe(domRef3.current);
 
+        window.addEventListener('hashchange', () => {
+            window.history.replaceState('','','/',('#')[0]);
+        });
+
         if (window != 'undefined') {
             if (window.performance.getEntriesByType('navigation')[0]?.type == 'reload') {
                 event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' })
                 remove_hash_from_url();
             }
         }

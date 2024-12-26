@@ -939,22 +939,103 @@ svg {
   cursor: pointer;
   z-index: 1;
   position: fixed;
-  bottom: 0;
   right:0;
   border-radius: 15px;
-  animation: chat 1.2s linear;
+  box-sizing: border-box;
 }
 
-@keyframes chat{
+.chat-bot.initial{
+  animation: chat-initial 0.6s linear;
+  animation-fill-mode: forwards;
+}
+
+.chat-bot.compress{
+  animation: chat-backward 0.6s linear;
+  animation-fill-mode: forwards;
+}
+
+
+.chat-bot.expand{
+  animation: chat-forward 0.6s linear;
+  animation-fill-mode: forwards;  
+}
+
+@keyframes chat-initial{
   0%{
     bottom: -100%;
   }
+  100%{
+    bottom: -44%;
+  }
+}
+
+@keyframes chat-backward{
+  0%{
+    bottom: 0;
+  }
 
   100%{
-    bottom: 0px;
+    bottom: -44%;
+  }
+}
+
+@keyframes chat-forward{
+  0%{
+    bottom: -44%;
+  }
+
+  100%{
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width:992px) {
+  @keyframes chat-initial{
+    0%{
+      bottom: -100%;
+    }
+    100%{
+      bottom: -42%;
+    }
+  }
+  
+  @keyframes chat-backward{
+    0%{
+      bottom: 0;
+    }
+  
+    100%{
+      bottom: -42%;
+    }
+  }
+  
+  @keyframes chat-forward{
+    0%{
+      bottom: -42%;
+    }
+  
+    100%{
+      bottom: 0;
+    }
   }
 }
 
 .chat-bot p,input::placeholder{
   font-size: 12px !important;
+}
+
+.chat-bot .header-title{
+  color:white;
+  font-size: 13px;
+  padding: 0;
+  height: 10px;
+  position: relative;
+  top:12px;
+  left:15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+}
+
+.chat-bot .header-title.light-mode{
+  color: var(--subheading-color)
 }

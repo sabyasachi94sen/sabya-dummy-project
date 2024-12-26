@@ -5,6 +5,15 @@ export const ChatBot = () => {
 
     const [showHeader,setShowHeader]=useState(true);
     const [lightMode,setLightMode]=useState(false)
+    const [expandChat,setExpandChat]=useState(false)
+    const [initialChat,setInitialChat]=useState(true)
+
+
+    const handleBot=()=>{
+        if(initialChat)
+            setInitialChat(false)
+        setExpandChat(!expandChat)
+    }
 
     useEffect(() => {
         const typingForm = document.querySelector(".typing-form");
@@ -167,6 +176,7 @@ export const ChatBot = () => {
             const isLightMode = document.body.classList.toggle("light_mode");
             localStorage.setItem("themeColor", isLightMode ? "light_mode" : "dark_mode");
             toggleThemeButton.innerText = isLightMode ? "dark_mode" : "light_mode";
+            setLightMode(isLightMode? true: false)
         });
 
         // Delete all chats from local storage when button is clicked
@@ -192,9 +202,16 @@ export const ChatBot = () => {
         });
     }, [])
 
+
+    console.log(lightMode,' mode')
+    
+
     return (
-        <div className="chat-bot">
-            <img className="icon-bot" src="/img/robot.svg" />
+        <div className={`chat-bot ${initialChat ? 'initial' : expandChat ? `expand`: `compress`}`}>
+            <div>
+            <img  onClick={handleBot}  className="icon-bot" src="/img/robot.svg" />
+            <div className={`header-title ${lightMode ? 'light-mode': ''}`}>Chat with SLHUB</div>
+            </div>
             <div className="typing-area">
                 <div className="chat-list">
                     {showHeader && <header className="header">

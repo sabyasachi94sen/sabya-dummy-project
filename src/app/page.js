@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [data, setData] = useState([])
 
-  useEffect(() => {
-    fetch('https://dummyjson.com/c/3029-d29f-4014-9fb4', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then((d) => d?.json())?.then((info) => {
-      setData(info)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://dummyjson.com/c/3029-d29f-4014-9fb4', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then((d) => d?.json())?.then((info) => {
+  //     setData(info)
+  //   })
+  // }, [])
 
   console.log(data, 'data')
   return (
@@ -38,7 +38,7 @@ export default function Home() {
         </ol>
 
         <div className={styles.ctas}>
-          <a
+          {/* <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
@@ -52,7 +52,7 @@ export default function Home() {
               height={20}
             />
             Deploy now
-          </a>
+          </a> */}
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
@@ -108,7 +108,7 @@ export default function Home() {
         </a>
       </footer>
       <>
-      {data && <div style={{color:'blue'}}>{data?.foo}</div>}
+      {/* {data && <div style={{color:'blue'}}>{data?.foo}</div>} */}
       </>
     </div>
   );

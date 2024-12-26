@@ -28,19 +28,29 @@ export const MenuOverLay = () => {
                 <div className="menu-bar3"></div>
             </div>
             <section id="home" className="center">
-                <p className="logo">Crenovent</p>
+                <p className="logo">SLHUB</p>
+                <div className="d-flex flex-column">
+                <div className="slide slide-right bg-none center">
+                    <h1>Take your sales process from chaos to clarity</h1>
+                </div>
+                <div className="line fade-in mt-5"></div>
+                <div className="slide slide-left mt-5 bg-none center">
+                    <h1>Accelerate wins
+                    with your AI Sales Engineer</h1>
+                </div>
+                </div>
             </section>
             <section id="about" className="center">
-                <h1>Know More Who I am</h1>
+                <h1>Take your sales process from chaos to clarity</h1>
             </section>
             <section id="skills" className="center">
-                <h1>Here's all the stuff I do</h1>
+                <h1>Enterprise-grade security guaranteed</h1>
             </section>
             <section id="projects" className="center">
-                <h1>Here's stuff I made recently</h1>
+                <h1>Bring in your best sales engineer on every deal</h1>
             </section>
             <section id="contact" className="center">
-                <h1>Have me make stuff for you</h1>
+                <h1>Have Our AI make decisions for you</h1>
             </section>
         </>
     )

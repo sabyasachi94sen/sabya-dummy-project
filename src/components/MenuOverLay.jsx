@@ -9,24 +9,46 @@ export const MenuOverLay = () => {
     const domRef1 = React.useRef();
     const domRef2 = React.useRef();
     const domRef3 = React.useRef();
-    React.useEffect(() => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => setVisible(entry.isIntersecting));
-      });
-      const observer1 = new IntersectionObserver(entries => {
-        entries.forEach(entry => setVisible1(entry.isIntersecting));
-      });
-      const observer2 = new IntersectionObserver(entries => {
-        entries.forEach(entry => setVisible2(entry.isIntersecting));
-      });
 
-      const observer3 = new IntersectionObserver(entries => {
-        entries.forEach(entry => setVisible3(entry.isIntersecting));
-      });
-      observer.observe(domRef.current);
-      observer1.observe(domRef1.current);
-      observer2.observe(domRef2.current);
-      observer3.observe(domRef3.current);
+    function remove_hash_from_url() {
+        var uri = window.location.toString();
+
+        if (uri.indexOf("#") > 0) {
+            var clean_uri = uri.substring(0,
+                uri.indexOf("#"));
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+
+            window.history.replaceState({},
+                document.title, '/');
+        }
+
+    }
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => setVisible(entry.isIntersecting));
+        });
+        const observer1 = new IntersectionObserver(entries => {
+            entries.forEach(entry => setVisible1(entry.isIntersecting));
+        });
+        const observer2 = new IntersectionObserver(entries => {
+            entries.forEach(entry => setVisible2(entry.isIntersecting));
+        });
+
+        const observer3 = new IntersectionObserver(entries => {
+            entries.forEach(entry => setVisible3(entry.isIntersecting));
+        });
+        observer.observe(domRef.current);
+        observer1.observe(domRef1.current);
+        observer2.observe(domRef2.current);
+        observer3.observe(domRef3.current);
+
+        if (window != 'undefined') {
+            if (window.performance.getEntriesByType('navigation')[0]?.type == 'reload') {
+                event.preventDefault();
+                remove_hash_from_url();
+            }
+        }
     }, []);
 
 
@@ -39,16 +61,16 @@ export const MenuOverLay = () => {
                             <a href="#home" className="center">Home</a>
                         </li>
                         <li id="nav-2" className="slide-out-2 center">
-                            <a href="#about" className="center">Products</a>
+                            <a href="#products" className="center">Products</a>
                         </li>
                         <li id="nav-3" className="slide-out-3 center">
-                            <a href="#skills" className="center">Solutions</a>
+                            <a href="#solutions" className="center">Solutions</a>
                         </li>
                         <li id="nav-4" className="slide-out-4 center">
-                            <a href="#projects" className="center">Resources</a>
+                            <a href="#resources" className="center">Resources</a>
                         </li>
                         <li id="nav-5" className="slide-out-5 center">
-                            <a href="#contact" className="center">Company</a>
+                            <a href="#company" className="center">Company</a>
                         </li>
                     </ul>
                 </nav>
@@ -61,27 +83,27 @@ export const MenuOverLay = () => {
             <section id="home" className="center">
                 <p className="logo">SLHUB</p>
                 <div className="d-flex flex-column">
-                <div className="slide slide-right bg-none center">
-                    <h1>Take your sales process from chaos to clarity</h1>
+                    <div className="slide slide-right bg-none center">
+                        <h1 className="d-flex justify-content-center gap-4 align-items-center ">Meet SLHUB <img className="robot-icon" src="/img/robot.svg" /></h1>
+                    </div>
+                    <div className="line fade-in mt-5"></div>
+                    <div className="slide slide-left mt-5 bg-none center">
+                        <h1>Accelerate wins
+                            with your AI Sales Engineer</h1>
+                    </div>
                 </div>
-                <div className="line fade-in mt-5"></div>
-                <div className="slide slide-left mt-5 bg-none center">
-                    <h1>Accelerate wins
-                    with your AI Sales Engineer</h1>
-                </div>
-                </div>
             </section>
-            <section id="about" className="center">
-                <h1 ref={domRef}  className={`fade-in-section center ${isVisible ? 'is-visible' : ''}`}>Take your sales process from chaos to clarity</h1>
+            <section id="products" className="center">
+                <h1 ref={domRef} className={`fade-in-section center ${isVisible ? 'is-visible' : ''}`}>Take your sales process from chaos to clarity with our products</h1>
             </section>
-            <section id="skills" className="center">
-                <h1 ref={domRef1}  className={`fade-in-section center ${isVisible1 ? 'is-visible' : ''}`}>Enterprise-grade security guaranteed</h1>
+            <section id="solutions" className="center">
+                <h1 ref={domRef1} className={`fade-in-section center ${isVisible1 ? 'is-visible' : ''}`}>Enterprise-grade security guaranteed solutions</h1>
             </section>
-            <section id="projects" className="center">
-                <h1 ref={domRef2}  className={`fade-in-section center ${isVisible2 ? 'is-visible' : ''}`}>Bring in your best sales engineer on every deal</h1>
+            <section id="resources" className="center">
+                <h1 ref={domRef2} className={`fade-in-section center ${isVisible2 ? 'is-visible' : ''}`}>Bring in your best sales engineer on every deal</h1>
             </section>
-            <section id="contact" className="center">
-                <h1 ref={domRef3}  className={`fade-in-section center ${isVisible3 ? 'is-visible' : ''}`}>Have Our AI make decisions for you</h1>
+            <section id="company" className="center">
+                <h1 ref={domRef3} className={`fade-in-section center ${isVisible3 ? 'is-visible' : ''}`}>Have Our AI make decisions for you</h1>
             </section>
         </>
     )

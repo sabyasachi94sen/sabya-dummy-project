@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { MenuOverLay } from "@/components/MenuOverLay";
+import { ChatBot } from "@/commons/ChatBot";
 
 export default function Home() {
 
@@ -59,6 +60,7 @@ export default function Home() {
   return (
     <>
       <MenuOverLay />
+      <ChatBot />
     </>
   );
 }

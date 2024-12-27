@@ -90,13 +90,20 @@ export const MenuOverLay = () => {
                         <h1 className="d-flex justify-content-center gap-4 align-items-center ">Meet SLHUB <img className="robot-icon" src="/img/robot.svg" /></h1>
                     </div>
                     <div className="slide slide-left mt-5 bg-none center">
-                        <h1>Accelerate wins
-                            with your AI Sales Engineer</h1>
+                        <h1>Accelerate wins with your AI Sales Engineer</h1>
                     </div>
                 </div>
             </section>
             <section id="products" className="center">
-                <h1 ref={domRef} className={`fade-in-section center ${isVisible ? 'is-visible' : ''}`}>Take your sales process from chaos to clarity with our products</h1>
+                <div ref={domRef} className={`fade-in-section d-flex flex-column center ${isVisible ? 'is-visible' : ''}`}>
+                <h1 >Take your sales process from chaos to clarity with our products</h1>
+                <h3 className="mt-4">Unlock 100% trusted semantic search</h3>
+                <div>
+                    <h5 className="mt-5 fw-bold glow-text">	
+                    &#x2714; Enforce access permissions from source applications in results through SiftHub’s out-of-the-box privacy and security features</h5>
+                   <h5 className="mt-4 fw-bold glow-text">  &#x2714; Empower your knowledge search with semantic understanding for natural language queries, thanks to deep learning-based LLMs</h5>
+                   </div>
+               </div>
             </section>
             <section id="solutions" className="center">
                 <h1 ref={domRef1} className={`fade-in-section center ${isVisible1 ? 'is-visible' : ''}`}>Enterprise-grade security guaranteed solutions</h1>

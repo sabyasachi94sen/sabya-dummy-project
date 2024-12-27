@@ -34,6 +34,12 @@ export const ChatBot = () => {
         const loadDataFromLocalstorage = () => {
             const savedChats = localStorage.getItem("saved-chats");
             const isLightMode = (localStorage.getItem("themeColor") === "light_mode");
+            console.log(savedChats,'xyz')
+
+            // if(!savedChats?.length){
+            //     confirm('Chat history is empty!');
+            //     return;
+            // }
 
             // Apply the stored theme
             document.body.classList.toggle("light_mode", isLightMode);
@@ -182,6 +188,11 @@ export const ChatBot = () => {
         // Delete all chats from local storage when button is clicked
         deleteChatButton.addEventListener("click", () => {
             if (confirm("Are you sure you want to delete all the chats?")) {
+                const savedChats = localStorage.getItem("saved-chats");
+                if(!savedChats?.length){
+                    confirm('Chat history is empty');
+                    return;
+                }
                 localStorage.removeItem("saved-chats");
                 loadDataFromLocalstorage();
             }
@@ -204,13 +215,14 @@ export const ChatBot = () => {
 
 
     console.log(lightMode,' mode')
+    console.log(showHeader,'header')
     
 
     return (
         <div className={`chat-bot ${initialChat ? 'initial' : expandChat ? `expand`: `compress`}`}>
             <div>
             <img  onClick={handleBot}  className="icon-bot" src="/img/robot.svg" />
-            <div className={`header-title ${lightMode ? 'light-mode': ''}`}>Chat with SLHUB</div>
+            <div className={`header-title mb-3 ${lightMode ? 'light-mode': ''}`}>Chat with SLHUB</div>
             </div>
             <div className="typing-area">
                 <div className="chat-list">

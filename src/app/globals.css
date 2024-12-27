@@ -480,6 +480,7 @@ section#company {
 
 .icon-bot{
   position: absolute;
+  cursor: pointer;
   color: white;
   width: 60px;
   height: 60px;
@@ -899,6 +900,8 @@ svg {
 
 /* Responsive media query code for small screen */
 @media (max-width: 768px) {
+
+  
   .header :is(.title, .subtitle) {
     font-size: 2rem;
     line-height: 2.6rem;
@@ -933,10 +936,10 @@ svg {
 
 .chat-bot{
   background: var(--primary-color);
-  width: 400px !important;
+  width: 400px;
   overflow-y: auto;
   overflow: visible;
-  cursor: pointer;
+  /* cursor: pointer; */
   z-index: 1;
   position: fixed;
   right:0;
@@ -1017,6 +1020,12 @@ svg {
     100%{
       bottom: 0;
     }
+  }
+}
+
+@media screen and (max-width:576px){
+  .chat-bot{
+    width: 100%;
   }
 }
 

@@ -4,7 +4,7 @@ import SvgIcon2 from "./icons/SvgIcon2";
 import SvgIcon3 from "./icons/SvgIcon3";
 import SvgIcon4 from "./icons/SvgIcon4";
 import { useRouter } from "next/navigation";
-import { DatabaseOutlined, HeartOutlined, MailOutlined, ProjectOutlined, RobotOutlined, SearchOutlined, UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
+import { BankOutlined, DatabaseOutlined, HeartOutlined, MailOutlined, MoneyCollectOutlined, ProjectOutlined, RobotOutlined, SearchOutlined, UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
 import Link from "next/link";
 import DrawerPanel from "./DrawerPanel";
@@ -61,6 +61,49 @@ function Navbar({ isResponsive }) {
             },
         ]
     }
+
+    
+    const industry = {
+        "banks": [
+            {
+                icon: <BankOutlined />,
+                heading: 'Bank',
+                description: 'Learn about our clients'
+            },
+            {
+                icon: <MoneyCollectOutlined />,
+                heading: 'Finances',
+                description: 'Bagged by Big4 Finances'
+            },
+        ]
+    }
+
+    
+    const industryItems = [
+        {
+            key: 2,
+            label: (
+            <div onClick={()=>router.push('/about')} className="dropdown-nav-grid">
+                <div>
+                    {/* <p className="nav-dropdown-title">AI Sales Agent</p> */}
+                    <div className="footer-list-container">
+                        {industry["banks"]?.map((d, i) =>
+                            <div key={`${d?.heading}-${i}`} className="footer-list-items">
+                                <div className="header-link-wrapper">
+                                    <div className="header-link-item-wrapper">{d?.icon}</div>
+                                    <div>
+                                        <div className="header-link-heading">{d?.heading}</div>
+                                        <div className="header-link-description">{d?.description}</div>
+                                    </div>
+                                </div>
+                            </div>)}
+                    </div>
+                </div>
+            </div>)
+        }
+    ]
+
+
 
 
     const companyItems = [
@@ -155,6 +198,14 @@ function Navbar({ isResponsive }) {
                             <p className="primary-text-style">Resources</p>
                             <SvgIcon3 className="svg-container1" />
                         </div>
+                        <Dropdown menu={{ items: industryItems }}>
+                        <a onClick={(e) => e.preventDefault()}>
+                        <div className="hierarchical-flex-container">
+                            <p className="primary-text-style">Industries</p>
+                            <SvgIcon3 className="svg-container1" />
+                        </div>
+                        </a>
+                        </Dropdown>
                         <Dropdown menu={{ items: companyItems }}>
                             <a onClick={(e) => e.preventDefault()}>
                                 <div className="hierarchical-flex-container">

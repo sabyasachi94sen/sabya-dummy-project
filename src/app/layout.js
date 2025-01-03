@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
   }, []);
 
 
-  if (!mounted) return <></>;
 
   return (
     <html lang="en">
@@ -31,11 +30,11 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="style.css" />
       </head>
       <body>
-      <Suspense fallback={<Loader />}>
+      {mounted && <Suspense fallback={<Loader />}>
       <Navbar isResponsive={isDesktopOrLaptop} />
         {children}
       <Footer />
-      </Suspense>
+      </Suspense>}
       </body>
     </html>
   );

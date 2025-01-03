@@ -7,9 +7,12 @@ import { useRouter } from "next/navigation";
 import { DatabaseOutlined, HeartOutlined, MailOutlined, ProjectOutlined, RobotOutlined, SearchOutlined, UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
 import Link from "next/link";
+import DrawerPanel from "./DrawerPanel";
+import { useState } from "react";
 
 function Navbar({ isResponsive }) {
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const router=useRouter();
 
     const productLinks = {
@@ -126,8 +129,10 @@ function Navbar({ isResponsive }) {
     ];
 
     return (
+        <>
+       {isDrawerOpen && <DrawerPanel isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen} />}
         <div className="main-content-container">
-            {!isResponsive && <UnorderedListOutlined size={'xl'} />}
+            {!isResponsive && <UnorderedListOutlined onClick={()=>setIsDrawerOpen(!isDrawerOpen)} size={'xl'} />}
             <div className="navigation-bar">
                 
                 {isResponsive &&
@@ -166,6 +171,7 @@ function Navbar({ isResponsive }) {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

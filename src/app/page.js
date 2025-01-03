@@ -15,6 +15,7 @@ import { Footer } from "@/components/Footer";
 import { Connectors } from "@/components/Connectors";
 import { TrustCenter } from "@/components/TrustCenter";
 import { Loader } from "@/commons/Loader";
+import DrawerPanel from "@/components/DrawerPanel";
 
 
 export default function Home() {
@@ -31,11 +32,6 @@ export default function Home() {
       <ProfileView />
       <Connectors />
       <TrustCenter />
-      <Drawer title="Basic Drawer">
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
     </>
   );
 }

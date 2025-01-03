@@ -14,9 +14,11 @@ import { useMediaQuery } from "react-responsive";
 import { Footer } from "@/components/Footer";
 import { Connectors } from "@/components/Connectors";
 import { TrustCenter } from "@/components/TrustCenter";
+import { Loader } from "@/commons/Loader";
 
 
 export default function Home() {
+  
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 992px)'

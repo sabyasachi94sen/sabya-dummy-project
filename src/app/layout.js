@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { useMediaQuery } from "react-responsive";
 import { Footer } from "@/components/Footer"
 import { Suspense, useState,useEffect } from "react";
+import { Loader } from "@/commons/Loader";
 
 export default function RootLayout({ children }) {
 
@@ -11,14 +12,15 @@ export default function RootLayout({ children }) {
     query: '(min-width: 992px)'
   })
 
-
+  
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <></>;
 
+  if (!mounted) return <></>;
 
   return (
     <html lang="en">
@@ -29,7 +31,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="style.css" />
       </head>
       <body>
-      <Suspense fallback={"Loading..."}>
+      <Suspense fallback={<Loader />}>
       <Navbar isResponsive={isDesktopOrLaptop} />
         {children}
       <Footer />
